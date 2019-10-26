@@ -1,0 +1,26 @@
+data <- scan("hackerrank_day1_data2.txt")
+
+len <- data[1]
+y <- len[1]+1 
+x <- data[c(2:y)]
+
+quart <- function(x) {
+  x <- sort(x)
+  n <- length(x)
+  m <- (n+1)/2
+  if (floor(m) != m) {
+    lwr <- m-1/2; upr <- m+1/2
+  } else {
+    lwr <- m-1; upr <- m+1
+  }
+  c(median(x[1:lwr]),median(x),median(x[upr:n]))
+}
+cat(quart(x), sep="\n")
+
+##The following use of 'quantile' didn't work for Test case 2 or 3:
+
+#len <- data[1]
+#y <- len[1]+1 
+#x <- data[c(2:y)]
+
+#cat(quantile(x, type = 6, probs = c(0.25,0.50,0.75)), sep="\n")
